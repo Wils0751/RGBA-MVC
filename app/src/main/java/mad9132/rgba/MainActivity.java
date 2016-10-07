@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements Observer
     private TextView            mColorSwatch;
     private RGBAModel           mModel;
     private SeekBar             mRedSB;
+    private SeekBar             mGreenSb;
+    private SeekBar             mBlueSB;
+    private SeekBar             mAlphaSB;
     //TODO: declare private members for mGreenSB, mBlueSB, and mAlphaSB
 
     @Override
@@ -63,14 +66,23 @@ public class MainActivity extends AppCompatActivity implements Observer
         // reference each View
         mColorSwatch = (TextView) findViewById( R.id.colorSwatch );
         mRedSB = (SeekBar) findViewById( R.id.redSB );
+        mGreenSb = (SeekBar) findViewById(R.id.greenSB);
+        mBlueSB = (SeekBar) findViewById(R.id.blueSB);
+        mAlphaSB =(SeekBar) findViewById(R.id.alphaSB);
         //TODO: reference the remaining <SeekBar>s: green, blue and alpha
 
         // set the domain (i.e. max) for each component
         mRedSB.setMax( RGBAModel.MAX_RGB );
+        mGreenSb.setMax(RGBAModel.MAX_RGB);
+        mBlueSB.setMax(RGBAModel.MAX_RGB);
+        mAlphaSB.setMax(RGBAModel.MAX_RGB);
         //TODO: setMax() for the remaining <SeekBar>s: green, blue and alpha
 
         // register the event handler for each <SeekBar>
         mRedSB.setOnSeekBarChangeListener( this );
+        mGreenSb.setOnSeekBarChangeListener( this);
+        mBlueSB.setOnSeekBarChangeListener(this);
+        mAlphaSB.setOnSeekBarChangeListener(this);
         //TODO: register the remaining <SeekBar>s: green, blue and alpha
 
         // initialize the View to the values of the Model
@@ -96,6 +108,32 @@ public class MainActivity extends AppCompatActivity implements Observer
             case R.id.action_red:
                 mModel.asRed();
                 return true;
+            case R.id.action_green:
+                mModel.asGreen();
+                return true;
+            case R.id.action_blue:
+                mModel.asBlue();
+                return true;
+            case R.id.action_black:
+                mModel.asBlack();
+                return true;
+            case R.id.action_cyan:
+                mModel.asCyan();
+                return true;
+            case R.id.action_magenta:
+                mModel.asMagenta();
+                return true;
+            case R.id.action_white:
+                mModel.asWhite();
+                return true;
+            case R.id.action_yellow:
+                mModel.asYellow();
+                return true;
+
+
+
+
+
 
             //TODO: handle the remaining menu items
 
@@ -124,9 +162,16 @@ public class MainActivity extends AppCompatActivity implements Observer
             case R.id.redSB:
                 mModel.setRed( mRedSB.getProgress() );
                 break;
-
+            case R.id.greenSB:
+                mModel.setGreen( mGreenSb.getProgress() );
+                break;
+            case R.id.blueSB:
+                mModel.setBlue( mBlueSB.getProgress() );
+                break;
             //TODO: case R.id.greenSB
-
+            case R.id.alphaSB:
+                mModel.setAlpha( mAlphaSB.getProgress() );
+                break;
             //TODO: case R.id.blueSB
 
             //TODO: case R.id.alphaSB
@@ -152,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements Observer
 
     private void updateBlueSB() {
         //TODO: set the blueSB's progress to the model's blue value
+        mBlueSB.setProgress(mModel.getBlue());
     }
 
     private void updateColorSwatch() {
@@ -163,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements Observer
 
     private void updateGreenSB() {
         //TODO: set the greenSB's progress to the model's green value
+        mGreenSb.setProgress(mModel.getGreen());
     }
 
     private void updateRedSB() {
