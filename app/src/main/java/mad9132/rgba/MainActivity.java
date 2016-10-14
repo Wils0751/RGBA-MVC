@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements Observer
         mRedSB.setMax( RGBAModel.MAX_RGB );
         mGreenSb.setMax(RGBAModel.MAX_RGB);
         mBlueSB.setMax(RGBAModel.MAX_RGB);
-        mAlphaSB.setMax(RGBAModel.MAX_RGB);
+        mAlphaSB.setMax(RGBAModel.MAX_ALPHA);
         //TODO: setMax() for the remaining <SeekBar>s: green, blue and alpha
 
         // register the event handler for each <SeekBar>
